@@ -16,6 +16,8 @@ from elements.enemy import Enemy
 
 from elements.mirilla import Mirilla
 
+from elements.comida import Comida
+
 """"
 Este es el modulo game_scene, aqui se encuentra 
 la escena en donde ocurre nuestro juego
@@ -30,12 +32,14 @@ def gameloop(screen):
     ''' 2.- generador de enemigos'''
     ADDENEMY = pygame.USEREVENT + 1
     pygame.time.set_timer(ADDENEMY, 700)
-
+    ADDFOOD=pygame.USEREVENT+2
+    pygame.time.set_timer(ADDFOOD, 700)
     ''' 3.- creamos la instancia de jugador'''
     player = Player(screen)
     mirilla=Mirilla((25,25), screen.get_width(),screen.get_height())
     ''' 4.- contenedores de enemigos y jugador'''
     enemies = pygame.sprite.Group()
+    comidas=pygame.sprite.Group()
     all_sprites = pygame.sprite.Group()
     all_sprites.add(player)
     all_sprites.add(mirilla)
@@ -66,6 +70,10 @@ def gameloop(screen):
                 new_enemy = Enemy(screen)
                 enemies.add(new_enemy)
                 all_sprites.add(new_enemy)
+            elif event.type == ADDFOOD:
+                new_food = Comida(screen)
+                comidas.add(new_food)
+                all_sprites.add(new_food)
 
             # POR HACER (2.4): Detectar click y disparar
             elif event.type==pygame.MOUSEBUTTONDOWN:
@@ -93,8 +101,10 @@ def gameloop(screen):
         # vemos si algun enemigo a chocado con el jugador
         if pygame.sprite.spritecollideany(player, enemies):
             # si pasa, removemos al jugador y detenemos el loop del juego
-            player.kill()
-            running = False
+            enemies.kill()
+        if pygame.sprite.spritecollideany(player, comidas):
+            # si pasa, removemos al jugador y detenemos el loop del juego
+            comidas.kill()
 
         # obtenemos todas las teclas presionadas actualmente
         pressed_keys = pygame.key.get_pressed()
@@ -103,6 +113,7 @@ def gameloop(screen):
         # actualizamos los enemigos
         enemies.update()
         mirilla.update()
+        comidas.update()
         # actualizamos la interfaz
         pygame.display.flip()
 

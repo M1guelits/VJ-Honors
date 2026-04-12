@@ -12,7 +12,7 @@ from pygame.locals import (K_LEFT, K_RIGHT, RLEACCEL)
 from elements.bullet import Bullet
 
 POU_IMG = pygame.image.load('assets/JorgePou.png')
-POU_IMG_scaled = pygame.transform.scale(POU_IMG, (80, 80))
+POU_IMG_scaled = pygame.transform.scale(POU_IMG, (120, 120))
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, screen):
@@ -23,7 +23,6 @@ class Player(pygame.sprite.Sprite):
         self.surf = POU_IMG_scaled
         self.surf.set_colorkey((0, 0, 0), RLEACCEL)
         self.rect = self.surf.get_rect(center=(self.screen_width // 2, self.screen_height - 20))
-
         # POR HACER (2.3): Lista de proyectiles
         self.projectiles = pygame.sprite.Group()
 

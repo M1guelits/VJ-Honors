@@ -11,13 +11,13 @@ import random
 from pygame.locals import (RLEACCEL)
 
 bug1 = pygame.image.load('assets/bug1.png')
-bug1_scaled = pygame.transform.scale(bug1, (64, 64))
+bug1_scaled = pygame.transform.scale(bug1, (45, 45))
 
 bug2 = pygame.image.load('assets/bug2.png')
-bug2_scaled = pygame.transform.scale(bug2, (64, 64))
+bug2_scaled = pygame.transform.scale(bug2, (45, 45))
 
 cocacola = pygame.image.load('assets/cocacola.png')
-cocacola_scaled = pygame.transform.scale(cocacola, (64, 64))
+cocacola_scaled = pygame.transform.scale(cocacola, (45, 45))
 
 imagenes_enemigos = [bug1_scaled, bug2_scaled, cocacola_scaled]
 
@@ -30,7 +30,7 @@ class Enemy(pygame.sprite.Sprite):
         self.rect = self.surf.get_rect(
             center=(random.randint(10, screen.get_width() - 10), screen.get_height() - 800))
         
-        self.speed = random.randint(3, 5)
+        self.speed = random.randint(3, 6)
 
 
 
