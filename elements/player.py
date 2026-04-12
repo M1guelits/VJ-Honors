@@ -18,12 +18,11 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, screen):
         # nos permite invocar métodos o atributos de Sprite
         super(Player, self).__init__()
+        self.screen_width = screen.get_width()
+        self.screen_height = screen.get_height()
         self.surf = POU_IMG_scaled
         self.surf.set_colorkey((0, 0, 0), RLEACCEL)
         self.rect = self.surf.get_rect(center=(self.screen_width // 2, self.screen_height - 20))
-
-        self.screen_width = screen.get_width()
-        self.screen_height = screen.get_height()
 
         # POR HACER (2.3): Lista de proyectiles
         self.projectiles = pygame.sprite.Group()
@@ -31,9 +30,9 @@ class Player(pygame.sprite.Sprite):
 
     def update(self, pressed_keys):
         if pressed_keys[K_LEFT]:
-            self.rect.move_ip(-4, 0)
+            self.rect.move_ip(-6, 0)
         if pressed_keys[K_RIGHT]:
-            self.rect.move_ip(4, 0)
+            self.rect.move_ip(6, 0)
 
         if self.rect.left < 0:
             self.rect.left = 0
