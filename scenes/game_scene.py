@@ -24,7 +24,8 @@ la escena en donde ocurre nuestro juego
 
 def gameloop(screen):
     ''' 1.- Definimos el fondo de nuestra escena'''
-    background_image = pygame.image.load("assets/pixelBackground.jpg").convert()
+    background_image = pygame.image.load("assets/fondo_pou.png").convert()
+    background_image = pygame.transform.scale(background_image, (1000, 700))
 
     ''' 2.- generador de enemigos'''
     ADDENEMY = pygame.USEREVENT + 1
