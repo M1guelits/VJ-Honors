@@ -7,21 +7,21 @@ if __name__ == "__main__": # Solo para que no ejecutes este archivo
     sys.exit()
 
 import pygame
-from pygame.locals import (
-    K_UP, K_DOWN, K_LEFT, K_RIGHT, RLEACCEL)
+from pygame.locals import (K_LEFT, K_RIGHT, RLEACCEL)
 
 from elements.bullet import Bullet
 
-JorgePNG = pygame.image.load('assets/JorgeVJ.png')
-JorgePNG_scaled = pygame.transform.scale(JorgePNG, (80, 80))
+POU_IMG = pygame.image.load('assets/JorgePou.png')
+POU_IMG_scaled = pygame.transform.scale(POU_IMG, (80, 80))
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, screen):
         # nos permite invocar métodos o atributos de Sprite
         super(Player, self).__init__()
-        self.surf = JorgePNG_scaled
+        self.surf = POU_IMG_scaled
         self.surf.set_colorkey((0, 0, 0), RLEACCEL)
-        self.rect = self.surf.get_rect()
+        self.rect = self.surf.get_rect(center=(self.screen_width // 2, self.screen_height - 20))
+
         self.screen_width = screen.get_width()
         self.screen_height = screen.get_height()
 
@@ -30,10 +30,6 @@ class Player(pygame.sprite.Sprite):
 
 
     def update(self, pressed_keys):
-        if pressed_keys[K_UP]:
-            self.rect.move_ip(0, -4)
-        if pressed_keys[K_DOWN]:
-            self.rect.move_ip(0, 4)
         if pressed_keys[K_LEFT]:
             self.rect.move_ip(-4, 0)
         if pressed_keys[K_RIGHT]:

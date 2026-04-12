@@ -20,19 +20,16 @@ class Enemy(pygame.sprite.Sprite):
         self.surf.set_colorkey((0, 0, 0), RLEACCEL)
         # la posicion inicial es generada aleatoriamente, al igual que la velocidad
         self.rect = self.surf.get_rect(
-            center=(
-                screen.get_width() + 100,
-                random.randint(0, screen.get_height()),
-            )
-        )
+            center=(random.randint(0, screen.get_width()), screen.get_height() - 1000))
+        
         self.speed = random.randint(3, 5)
 
 
 
     def update(self):
-        self.rect.move_ip(-self.speed, 0)
+        self.rect.move_ip(0, self.speed)
         # Destruir a los enemigos
         # si se salen de la pantalla
-        if self.rect.right < 0:
+        if self.rect.top > 700:
             self.kill()
 
