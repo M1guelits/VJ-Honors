@@ -31,7 +31,7 @@ def gameloop(screen):
 
     ''' 2.- generador de enemigos'''
     ADDENEMY = pygame.USEREVENT + 1
-    pygame.time.set_timer(ADDENEMY, 700)
+    pygame.time.set_timer(ADDENEMY, 1200)
     ADDFOOD=pygame.USEREVENT+2
     pygame.time.set_timer(ADDFOOD, 700)
     ''' 3.- creamos la instancia de jugador'''
