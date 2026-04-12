@@ -4,8 +4,15 @@ import scenes.muerte_scene as muerte_scene
 import pygame
 
 
+
+
 """ Inicializamos PYGAME"""
 pygame.init()
+
+pygame.mixer.music.load('assets/musica_pou.mp3')
+pygame.mixer.music.set_volume(0.4)
+pygame.mixer.music.play(-1)
+
 
 # 1.- Definimos las medidas de nuestra pantalla
 SCREEN_WIDTH = 1000
