@@ -12,7 +12,7 @@ from pygame.locals import (K_ESCAPE, KEYDOWN, QUIT)
 
 from elements.player import Player
 
-from elements.enemy import Enemy
+from elements.enemy import Enemy, Boss
 
 from elements.mirilla import Mirilla
 
@@ -31,9 +31,9 @@ def gameloop(screen):
 
     ''' 2.- generador de enemigos'''
     ADDENEMY = pygame.USEREVENT + 1
-    pygame.time.set_timer(ADDENEMY, 1200)
+    pygame.time.set_timer(ADDENEMY, 1100)
     ADDFOOD=pygame.USEREVENT+2
-    pygame.time.set_timer(ADDFOOD, 900)
+    pygame.time.set_timer(ADDFOOD, 1350)
     ''' 3.- creamos la instancia de jugador'''
     player = Player(screen)
     mirilla=Mirilla((25,25), screen.get_width(),screen.get_height())
@@ -57,6 +57,7 @@ def gameloop(screen):
     c=0
     ct=0
     ctperdidos=0
+
     # loop principal del juego
     while running:
         contador = font.render(f"Score: {ct}   Perdidos: {ctperdidos}/8", True, (0, 0, 0))
@@ -111,13 +112,18 @@ def gameloop(screen):
         pygame.sprite.groupcollide(player.projectiles, enemies, True, True)
 
         # vemos si algun enemigo a chocado con el jugador
-        if pygame.sprite.spritecollide(player, enemies, pygame.sprite.collide_rect_ratio(0.20)):
+        if pygame.sprite.spritecollide(player, enemies, pygame.sprite.collide_rect_ratio(0.10)):
             player.kill()
             running=False
 
-        if pygame.sprite.spritecollideany(player, comidas, pygame.sprite.collide_rect_ratio(0.20)):
+        if pygame.sprite.spritecollideany(player, comidas, pygame.sprite.collide_rect_ratio(0.70)):
             # si pasa, removemos al jugador y detenemos el loop del juego
             ct+=1
+            if ct > 0 and ct % 20 == 0:
+                billy_boss = Boss(screen)
+                enemies.add(billy_boss)
+                all_sprites.add(billy_boss)
+
             for comida in comidas:
                 comida.kill()
                 break
