@@ -29,7 +29,6 @@ class Comida(pygame.sprite.Sprite):
         # la posicion inicial es generada aleatoriamente, al igual que la velocidad
         self.rect = self.surf.get_rect(
             center=(random.randint(10, screen.get_width() - 10), screen.get_height() - 800))
-        
         self.speed = random.randint(4, 6)
 
 
@@ -38,5 +37,3 @@ class Comida(pygame.sprite.Sprite):
         self.rect.move_ip(0, self.speed)
         # Destruir a los enemigos
         # si se salen de la pantalla
-        if self.rect.top > 700:
-            self.kill()

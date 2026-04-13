@@ -56,9 +56,10 @@ def gameloop(screen):
     lista =[]
     c=0
     ct=0
+    ctperdidos=0
     # loop principal del juego
     while running:
-        contador = font.render(f"Score: {ct}", True, (0, 0, 0))
+        contador = font.render(f"Score: {ct}   Perdidos: {ctperdidos}/8", True, (0, 0, 0))
         contador_rect = contador.get_rect(
         center=(screen.get_width() // 2, screen.get_height() // 2 - 100)
         )
@@ -120,6 +121,12 @@ def gameloop(screen):
             for comida in comidas:
                 comida.kill()
                 break
+        for comida in comidas:
+            if comida.rect.top>700:
+                ctperdidos+=1
+                comida.kill()
+        if ctperdidos==8:
+             running=False
         # obtenemos todas las teclas presionadas actualmente
         pressed_keys = pygame.key.get_pressed()
         # actualizamos el sprite del jugador basado en las teclas presionadas
