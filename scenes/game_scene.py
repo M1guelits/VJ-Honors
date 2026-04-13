@@ -31,9 +31,9 @@ def gameloop(screen):
 
     ''' 2.- generador de enemigos'''
     ADDENEMY = pygame.USEREVENT + 1
-    pygame.time.set_timer(ADDENEMY, 700)
+    pygame.time.set_timer(ADDENEMY, 1200)
     ADDFOOD=pygame.USEREVENT+2
-    pygame.time.set_timer(ADDFOOD, 1800)
+    pygame.time.set_timer(ADDFOOD, 900)
     ''' 3.- creamos la instancia de jugador'''
     player = Player(screen)
     mirilla=Mirilla((25,25), screen.get_width(),screen.get_height())
@@ -110,11 +110,11 @@ def gameloop(screen):
         pygame.sprite.groupcollide(player.projectiles, enemies, True, True)
 
         # vemos si algun enemigo a chocado con el jugador
-        if pygame.sprite.spritecollide(player, enemies, pygame.sprite.collide_rect_ratio(0.60)):
+        if pygame.sprite.spritecollide(player, enemies, pygame.sprite.collide_rect_ratio(0.20)):
             player.kill()
             running=False
 
-        if pygame.sprite.spritecollideany(player, comidas, pygame.sprite.collide_rect_ratio(0.60)):
+        if pygame.sprite.spritecollideany(player, comidas, pygame.sprite.collide_rect_ratio(0.20)):
             # si pasa, removemos al jugador y detenemos el loop del juego
             ct+=1
             for comida in comidas:
