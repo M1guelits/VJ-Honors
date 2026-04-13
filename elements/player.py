@@ -29,9 +29,9 @@ class Player(pygame.sprite.Sprite):
 
     def update(self, pressed_keys):
         if pressed_keys[K_LEFT]:
-            self.rect.move_ip(-6, 0)
+            self.rect.move_ip(-8, 0)
         if pressed_keys[K_RIGHT]:
-            self.rect.move_ip(6, 0)
+            self.rect.move_ip(8, 0)
 
         if self.rect.left < 0:
             self.rect.left = 0

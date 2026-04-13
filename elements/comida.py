@@ -30,7 +30,7 @@ class Comida(pygame.sprite.Sprite):
         self.rect = self.surf.get_rect(
             center=(random.randint(10, screen.get_width() - 10), screen.get_height() - 800))
         
-        self.speed = random.randint(3, 7)
+        self.speed = random.randint(4, 6)
 
 
 
