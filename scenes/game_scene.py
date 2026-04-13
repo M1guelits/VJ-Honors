@@ -45,14 +45,25 @@ def gameloop(screen):
     all_sprites.add(mirilla)
 
     clock = pygame.time.Clock()
-
+    ct=0
+    font = pygame.font.Font("assets/fuente.ttf", 42)
+    contador = font.render(f"Score: {ct}", True, (0, 0, 0))
+    contador_rect = contador.get_rect(
+        center=(screen.get_width() // 2, screen.get_height() // 2 - 25)
+    )
     # variable booleana para manejar el loop
     running = True
     lista =[]
     c=0
+    ct=0
     # loop principal del juego
     while running:
+        contador = font.render(f"Score: {ct}", True, (0, 0, 0))
+        contador_rect = contador.get_rect(
+        center=(screen.get_width() // 2, screen.get_height() // 2 - 100)
+        )
         screen.blit(background_image, [0, 0])
+        screen.blit(contador, contador_rect)
         # iteramos sobre cada evento en la cola
         for event in pygame.event.get():
             # se presiono una tecla?
@@ -100,12 +111,15 @@ def gameloop(screen):
 
         # vemos si algun enemigo a chocado con el jugador
         if pygame.sprite.spritecollide(player, enemies, pygame.sprite.collide_rect_ratio(0.60)):
-            enemies.kill()
+            player.kill()
+            running=False
 
         if pygame.sprite.spritecollideany(player, comidas, pygame.sprite.collide_rect_ratio(0.60)):
             # si pasa, removemos al jugador y detenemos el loop del juego
-            print("Rico")
-
+            ct+=1
+            for comida in comidas:
+                comida.kill()
+                break
         # obtenemos todas las teclas presionadas actualmente
         pressed_keys = pygame.key.get_pressed()
         # actualizamos el sprite del jugador basado en las teclas presionadas
@@ -117,4 +131,4 @@ def gameloop(screen):
         # actualizamos la interfaz
         pygame.display.flip()
 
-        clock.tick(30)
+        clock.tick(60)

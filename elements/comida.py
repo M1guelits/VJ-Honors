@@ -11,13 +11,13 @@ import random
 from pygame.locals import (RLEACCEL)
 
 comida1 = pygame.image.load('assets/minion.png')
-comida1_scaled = pygame.transform.scale(comida1, (60, 60))
+comida1_scaled = pygame.transform.scale(comida1, (70, 70))
 
 comida2 = pygame.image.load('assets/donapato.png')
-comida2_scaled = pygame.transform.scale(comida2, (60, 60))
+comida2_scaled = pygame.transform.scale(comida2, (70, 70))
 
 comida3 = pygame.image.load('assets/coin.png')
-comida3_scaled = pygame.transform.scale(comida3, (60, 60))
+comida3_scaled = pygame.transform.scale(comida3, (70, 70))
 
 imagenes_enemigos = [comida1_scaled, comida2_scaled, comida3_scaled]
 

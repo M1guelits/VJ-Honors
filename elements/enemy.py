@@ -11,13 +11,13 @@ import random
 from pygame.locals import (RLEACCEL)
 
 bug1 = pygame.image.load('assets/bug1.png')
-bug1_scaled = pygame.transform.scale(bug1, (45, 45))
+bug1_scaled = pygame.transform.scale(bug1, (70, 70))
 
 bug2 = pygame.image.load('assets/bug2.png')
-bug2_scaled = pygame.transform.scale(bug2, (45, 45))
+bug2_scaled = pygame.transform.scale(bug2, (70, 70))
 
 cocacola = pygame.image.load('assets/cocacola.png')
-cocacola_scaled = pygame.transform.scale(cocacola, (45, 45))
+cocacola_scaled = pygame.transform.scale(cocacola, (70, 70))
 
 imagenes_enemigos = [bug1_scaled, bug2_scaled, cocacola_scaled]
 

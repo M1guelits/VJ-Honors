@@ -12,7 +12,7 @@ from pygame.locals import (K_LEFT, K_RIGHT, RLEACCEL)
 from elements.bullet import Bullet
 
 POU_IMG = pygame.image.load('assets/JorgePou.png')
-POU_IMG_scaled = pygame.transform.scale(POU_IMG, (120, 120))
+POU_IMG_scaled = pygame.transform.scale(POU_IMG, (140, 140))
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, screen):
