@@ -20,7 +20,7 @@ cocacola = pygame.image.load('assets/cocacola.png')
 cocacola_scaled = pygame.transform.scale(cocacola, (72, 72))
 
 billy = pygame.image.load('assets/billy.png')
-billy_scaled = pygame.transform.scale(billy, (360, 410))
+billy_scaled = pygame.transform.scale(billy, (320, 370))
 
 imagenes_enemigos = [bug1_scaled, bug2_scaled, cocacola_scaled]
 
@@ -54,7 +54,7 @@ class Boss(pygame.sprite.Sprite):
         self.rect = self.surf.get_rect(
             center=(random.randint(150, screen.get_width() - 150), screen.get_height() - 900))
         
-        self.speed = 2
+        self.speed = 2.5
 
     def update(self):
             self.rect.move_ip(0, self.speed)
