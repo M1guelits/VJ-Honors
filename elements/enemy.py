@@ -22,7 +22,11 @@ cocacola_scaled = pygame.transform.scale(cocacola, (72, 72))
 billy = pygame.image.load('assets/billy.png')
 billy_scaled = pygame.transform.scale(billy, (320, 370))
 
+digglet = pygame.image.load('assets/digglet.png')
+digglet_scaled = pygame.transform.scale(digglet, (560, 530))
+
 imagenes_enemigos = [bug1_scaled, bug2_scaled, cocacola_scaled]
+imagenes_bosses = [billy_scaled, digglet_scaled]
 
 class Enemy(pygame.sprite.Sprite):
     def __init__(self, screen):
@@ -32,7 +36,7 @@ class Enemy(pygame.sprite.Sprite):
         # la posicion inicial es generada aleatoriamente, al igual que la velocidad
         self.rect = self.surf.get_rect(
             center=(random.randint(10, screen.get_width() - 10), screen.get_height() - 800))
-        
+        self.mask = pygame.mask.from_surface(self.surf)
         self.speed = random.randint(5, 7)
 
 
@@ -47,13 +51,13 @@ class Enemy(pygame.sprite.Sprite):
 class Boss(pygame.sprite.Sprite):
     def __init__(self, screen):
         super(Boss, self).__init__()
-        self.surf = billy_scaled
+        self.surf = random.choice(imagenes_bosses)
         self.surf.set_colorkey((0, 0, 0), RLEACCEL)
         
 
         self.rect = self.surf.get_rect(
             center=(random.randint(150, screen.get_width() - 150), screen.get_height() - 900))
-        
+        self.mask = pygame.mask.from_surface(self.surf)
         self.speed = 2.5
 
     def update(self):

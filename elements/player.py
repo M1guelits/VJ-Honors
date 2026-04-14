@@ -23,6 +23,7 @@ class Player(pygame.sprite.Sprite):
         self.surf = POU_IMG_scaled
         self.surf.set_colorkey((0, 0, 0), RLEACCEL)
         self.rect = self.surf.get_rect(center=(self.screen_width // 2, self.screen_height - 20))
+        self.mask = pygame.mask.from_surface(self.surf)
         # POR HACER (2.3): Lista de proyectiles
         self.projectiles = pygame.sprite.Group()
 

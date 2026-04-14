@@ -134,8 +134,9 @@ def gameloop(screen):
         # POR HACER (2.5): Destruir balas y bugs si chocan
         pygame.sprite.groupcollide(player.projectiles, enemies, True, True)
 
-        # vemos si algun enemigo a chocado con el jugador
-        if pygame.sprite.spritecollide(player, enemies, pygame.sprite.collide_rect_ratio(0.70)):
+
+        enemigo_chocado = pygame.sprite.spritecollide(player, enemies, False, pygame.sprite.collide_mask)
+        if enemigo_chocado:
             player.kill()
             running=False
         
@@ -148,10 +149,12 @@ def gameloop(screen):
             else:
                 ctperdidos=0
 
-        if pygame.sprite.spritecollideany(player, comidas, pygame.sprite.collide_rect_ratio(0.70)):
+
+        comida_chocada = pygame.sprite.spritecollideany(player, comidas, pygame.sprite.collide_mask)
+        if comida_chocada:
             # si pasa, removemos al jugador y detenemos el loop del juego
             ct+=1
-            if ct > 0 and ct % 20 == 0:
+            if ct > 0 and ct % 17 == 0:
                 billy_boss = Boss(screen)
                 enemies.add(billy_boss)
                 all_sprites.add(billy_boss)

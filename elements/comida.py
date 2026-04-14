@@ -32,6 +32,7 @@ class Comida(pygame.sprite.Sprite):
         # la posicion inicial es generada aleatoriamente, al igual que la velocidad
         self.rect = self.surf.get_rect(
             center=(random.randint(10, screen.get_width() - 10), screen.get_height() - 800))
+        self.mask = pygame.mask.from_surface(self.surf)
         self.speed = random.randint(3, 4)
 
 
