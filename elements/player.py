@@ -7,7 +7,7 @@ if __name__ == "__main__": # Solo para que no ejecutes este archivo
     sys.exit()
 
 import pygame
-from pygame.locals import (K_LEFT, K_RIGHT, RLEACCEL)
+from pygame.locals import (K_a, K_d, RLEACCEL)
 
 from elements.bullet import Bullet
 
@@ -28,9 +28,9 @@ class Player(pygame.sprite.Sprite):
 
 
     def update(self, pressed_keys):
-        if pressed_keys[K_LEFT]:
+        if pressed_keys[K_a]:
             self.rect.move_ip(-8.5, 0)
-        if pressed_keys[K_RIGHT]:
+        if pressed_keys[K_d]:
             self.rect.move_ip(8.5, 0)
 
         if self.rect.left < 0:

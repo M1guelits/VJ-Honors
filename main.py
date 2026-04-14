@@ -25,5 +25,3 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 basic_scene.gameloop(screen)
 game_scene.gameloop(screen)
 muerte_scene.gameloop(screen)
-
-
